@@ -11,12 +11,12 @@ var vinylPaths = require('vinyl-paths');
 var sourcemaps = require('gulp-sourcemaps');
 
 var jsFiles = [
-    'src/js/modules/**/*.js',
-    'src/js/app.js'
+    'src/modules/**/*.js',
+    'src/app.js'
 ];
 
 gulp.task('clean', function() {
-    return gulp.src(['js/all.js'], {read: false})
+    return gulp.src(['public/js/all.js'], {read: false})
         .pipe(vinylPaths(del))
 });
 
@@ -31,7 +31,7 @@ gulp.task('minify', ['lint'], function() {
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(concat('all.min.js'))
-        .pipe(gulp.dest('js/'));
+        .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('watch', ['default'], function() {
